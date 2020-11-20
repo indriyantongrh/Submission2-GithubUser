@@ -75,7 +75,7 @@ class DetailUser : AppCompatActivity() {
                 }
                 tvFollowers.text = getValue?.followers.toString()
                 tvFollowing.text = getValue?.following.toString()
-                tvRepository.text = getValue?.public_repos.toString()+ " Repository"
+                tvRepository.text = getValue?.public_repos.toString()+ getString(R.string.respository)
 
             }
 

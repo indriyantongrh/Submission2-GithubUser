@@ -16,14 +16,12 @@
         android:layout_below="@id/cvSearchview"
         android:layout_marginTop="20dp">
 
-
         <ImageView
             android:id="@+id/imageNotFound"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:visibility="gone"
             android:src="@drawable/notfound"/>
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvDataUser"
@@ -34,9 +32,5 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-
-
     </LinearLayout>
-
 </LinearLayout>
