@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.Toast
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var rvDataUser: RecyclerView
     private lateinit var svUserGithub: SearchView
     private lateinit var imageSearch: ImageView
+    private lateinit var imageNotFound: ImageView
 
     lateinit
     var progerssProgressDialog: ProgressDialog
@@ -38,42 +40,49 @@ class MainActivity : AppCompatActivity() {
         rvDataUser = findViewById(R.id.rvDataUser)
         svUserGithub = findViewById(R.id.svUserGithub)
         imageSearch = findViewById(R.id.imageSearch)
-
+        imageNotFound = findViewById(R.id.imageNotFound)
+        imageSearch.visibility = View.VISIBLE
         rvDataUser.setHasFixedSize(true)
-
 
         svUserGithub.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 progerssProgressDialog = ProgressDialog(this@MainActivity)
-                progerssProgressDialog.setTitle("Mencari data...")
+                progerssProgressDialog.setMessage("Mencari data...")
                 progerssProgressDialog.setCancelable(false)
                 progerssProgressDialog.show()
                 NetworkConfig().getUserss.getUserSearch2(query)
-                    .enqueue(object : Callback<ResponseSearch> {
-                        override fun onResponse(
-                            call: Call<ResponseSearch>,
-                            response: Response<ResponseSearch>
-                        ) {
-                            imageSearch.visibility = View.GONE
-                            progerssProgressDialog.dismiss()
-                            listUsergithub = response!!.body()!!.items as ArrayList<ItemsItem>
-                            Log.d("jajal2", "jajal2" + listUsergithub)
-                            rvDataUser.adapter = adapteruser(listUsergithub)
-                            ///rvDataUser.setOnClickListener()=
+                        .enqueue(object : Callback<ResponseSearch> {
+                            override fun onResponse(
+                                    call: Call<ResponseSearch>,
+                                    response: Response<ResponseSearch>
+                            ) {
+                                if (response!!.body()!!.totalCount == 0) {
+                                    progerssProgressDialog.dismiss()
+                                    imageSearch.visibility = View.GONE
+                                    imageNotFound.visibility = View.VISIBLE
+                                    ////Toast.makeText(this@MainActivity, "User tidak ditemukan", Toast.LENGTH_LONG).show()
+                                } else {
+                                    imageSearch.visibility = View.GONE
+                                    imageNotFound.visibility = View.GONE
+                                    progerssProgressDialog.dismiss()
+                                    listUsergithub = response!!.body()!!.items as ArrayList<ItemsItem>
+                                    Log.d("jajal2", "jajal2" + listUsergithub)
+                                    rvDataUser.adapter = adapteruser(listUsergithub)
+                                }
 
+                            }
 
-                        }
+                            override fun onFailure(call: Call<ResponseSearch>, t: Throwable) {
+                                Log.d("jajal", "fail" + t.message)
 
-                        override fun onFailure(call: Call<ResponseSearch>, t: Throwable) {
-                            Log.d("jajal", "fail" + t.message)
+                            }
 
-                        }
-
-                    })
+                        })
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+
                 return false
             }
 

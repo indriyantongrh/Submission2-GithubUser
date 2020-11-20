@@ -40,7 +40,15 @@
                 android:id="@+id/imageSearch"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:visibility="gone"
                 android:src="@drawable/iconsearch"/>
+
+            <ImageView
+                android:id="@+id/imageNotFound"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:visibility="gone"
+                android:src="@drawable/notfound"/>
 
 
             <androidx.recyclerview.widget.RecyclerView
