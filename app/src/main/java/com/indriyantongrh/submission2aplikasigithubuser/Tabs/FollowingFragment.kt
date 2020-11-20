@@ -46,14 +46,9 @@ class FollowingFragment : Fragment() {
                 Log.d("jajal List", "jajal" + listFollowers)
                 rvDataUser.adapter = adapterfollowers(listFollowers)
             }
-
             override fun onFailure(call: Call<List<ResponseFollowers>>, t: Throwable) {
                 Log.d("jajal 2" ,"failure")
-
             }
-
         })
     }
-
-
 }

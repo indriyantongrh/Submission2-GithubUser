@@ -18,25 +18,14 @@ data class ResponseSearch(
 	val items: List<ItemsItem?>? = null
 ) : Parcelable
 
-
-
 @Parcelize
 data class ItemsItem(
 
 	@field:SerializedName("login")
 	val login: String? = null,
 
-	/*@field:SerializedName("id")
-	val id: Int? = null,
-
-	@field:SerializedName("node_id")
-	val nodeId: String? = null,*/
-
 	@field:SerializedName("avatar_url")
 	val avatarUrl: String? = null,
-
-/*	@field:SerializedName("gravatar_id")
-	val gravatarId: String? = null,*/
 
 	@field:SerializedName("url")
 	val url: String? = null,
@@ -49,35 +38,5 @@ data class ItemsItem(
 
 	@field:SerializedName("following_url")
 	val followingUrl: String? = null
-
-	/*@field:SerializedName("gists_url")
-	val gistsUrl: String? = null,
-
-	@field:SerializedName("starred_url")
-	val starredUrl: String? = null,
-
-	@field:SerializedName("subscriptions_url")
-	val subscriptionsUrl: String? = null,
-
-	@field:SerializedName("organizations_url")
-	val organizationsUrl: String? = null,
-
-	@field:SerializedName("repos_url")
-	val reposUrl: String? = null,
-
-	@field:SerializedName("events_url")
-	val eventsUrl: String? = null,
-
-	@field:SerializedName("received_events_url")
-	val receivedEventsUrl: String? = null,
-
-	@field:SerializedName("type")
-	val type: String? = null,
-
-	@field:SerializedName("site_admin")
-	val siteAdmin: Boolean? = null,
-
-	@field:SerializedName("score")
-	val score: Double? = null*/
 
 ) : Parcelable

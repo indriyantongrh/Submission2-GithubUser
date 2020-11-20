@@ -21,8 +21,6 @@ import java.io.IOException
  */
 
 class NetworkConfig{
-
-
     fun getInterceptor() : OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
@@ -38,9 +36,6 @@ class NetworkConfig{
 
         return  okHttpClient
     }
-
-
-
     fun getRetrofit() : Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://api.github.com/")
@@ -49,32 +44,21 @@ class NetworkConfig{
             .build()
     }
 
-
     val getUserss: getUsers = getRetrofit().create(getUsers::class.java)
     val getDetail: getDetailUsers = getRetrofit().create(getDetailUsers::class.java)
     val getFollowers: getFollowersMember = getRetrofit().create(getFollowersMember::class.java)
     val getFollowing: getFollowingMember = getRetrofit().create(getFollowingMember::class.java)
-
-
 }
-
-
-
 
 interface getUsers {
     @Headers("Content-Type:application/json; charset=UTF-8")
     @GET("search/users")
     fun getUserSearch2(@Query("q") q: String?) : Call<ResponseSearch>
-
-
 }
-
 interface getDetailUsers {
     @GET("users/{username}")
     fun getDetails(@Path("username") username: String?) : Call<ResponseDetails>
 }
-
-
 interface getFollowersMember {
     @GET("users/{username}/followers")
     fun getFollowerss(@Path("username") username: String?) : Call<List<ResponseFollowers>>

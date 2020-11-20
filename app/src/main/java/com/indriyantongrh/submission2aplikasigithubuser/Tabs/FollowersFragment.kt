@@ -21,9 +21,6 @@ import retrofit2.Response
 
 
 class FollowersFragment : Fragment() {
-
-
-
     private lateinit var rvDataUser: RecyclerView
     private lateinit var listFollowers: ArrayList<ResponseFollowers>
     override fun onCreateView(
@@ -51,12 +48,9 @@ class FollowersFragment : Fragment() {
                 Log.d("jajal List", "jajal" + listFollowers)
                 rvDataUser.adapter = adapterfollowers(listFollowers)
             }
-
             override fun onFailure(call: Call<List<ResponseFollowers>>, t: Throwable) {
                 Log.d("jajal 2" ,"failure")
-
             }
-
         })
     }
 

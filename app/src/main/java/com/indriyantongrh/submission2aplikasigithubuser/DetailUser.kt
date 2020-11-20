@@ -51,7 +51,6 @@ class DetailUser : AppCompatActivity() {
         tabs.setupWithViewPager(view_pager)
         supportActionBar?.elevation = 0f
 
-
         getDetail()
     }
 
@@ -81,10 +80,8 @@ class DetailUser : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ResponseDetails>, t: Throwable) {
-                Log.d("jajal", "jajal gagal")
-
+                Log.d("Failure", "Gagal Connection")
             }
-
         })
     }
 
@@ -92,8 +89,4 @@ class DetailUser : AppCompatActivity() {
         onBackPressed()
         return true
     }
-
-
-
-
 }

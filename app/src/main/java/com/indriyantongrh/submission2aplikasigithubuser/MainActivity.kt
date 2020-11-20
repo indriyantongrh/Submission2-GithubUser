@@ -25,25 +25,19 @@ class MainActivity : AppCompatActivity() {
     private lateinit var svUserGithub: SearchView
     private lateinit var imageSearch: ImageView
     private lateinit var imageNotFound: ImageView
-
     lateinit
     var progerssProgressDialog: ProgressDialog
-    private val list = ArrayList<ItemsItem>()
     private lateinit var listUsergithub: ArrayList<ItemsItem>
 
-
-    /// val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         rvDataUser = findViewById(R.id.rvDataUser)
         svUserGithub = findViewById(R.id.svUserGithub)
         imageSearch = findViewById(R.id.imageSearch)
         imageNotFound = findViewById(R.id.imageNotFound)
         imageSearch.visibility = View.VISIBLE
         rvDataUser.setHasFixedSize(true)
-
         svUserGithub.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 progerssProgressDialog = ProgressDialog(this@MainActivity)
@@ -60,38 +54,26 @@ class MainActivity : AppCompatActivity() {
                                     progerssProgressDialog.dismiss()
                                     imageSearch.visibility = View.GONE
                                     imageNotFound.visibility = View.VISIBLE
-                                    ////Toast.makeText(this@MainActivity, "User tidak ditemukan", Toast.LENGTH_LONG).show()
                                 } else {
                                     imageSearch.visibility = View.GONE
                                     imageNotFound.visibility = View.GONE
                                     progerssProgressDialog.dismiss()
                                     listUsergithub = response!!.body()!!.items as ArrayList<ItemsItem>
-                                    Log.d("jajal2", "jajal2" + listUsergithub)
                                     rvDataUser.adapter = adapteruser(listUsergithub)
                                 }
-
                             }
-
                             override fun onFailure(call: Call<ResponseSearch>, t: Throwable) {
-                                Log.d("jajal", "fail" + t.message)
-
+                                Log.d("Failure", "Fialed Connect" + t.message)
                             }
-
                         })
                 return true
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
 
                 return false
             }
-
         })
-
-
     }
-
-
 }
 
 

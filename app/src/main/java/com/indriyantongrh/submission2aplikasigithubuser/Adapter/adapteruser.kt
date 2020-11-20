@@ -41,7 +41,6 @@ class adapteruser(private val listUsergithub: ArrayList<ItemsItem>) : RecyclerVi
             mIntent.putExtra(DetailUser.EXTRA_DETAIL, dataUserIntent)
             it.context.startActivity(mIntent)
         }
-
     }
 
     override fun getItemCount(): Int = listUsergithub.size

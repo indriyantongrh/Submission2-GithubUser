@@ -28,7 +28,6 @@ class adapterfollowers (private val listFollowers: ArrayList<ResponseFollowers>)
 
     override fun getItemCount(): Int = listFollowers.size
 
-
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(followers: ResponseFollowers) {
             with(itemView) {
@@ -38,9 +37,6 @@ class adapterfollowers (private val listFollowers: ArrayList<ResponseFollowers>)
                         .into(ivAvatar)
                 tvNameUser.text = followers.login
             }
-
         }
-
-
     }
 }
