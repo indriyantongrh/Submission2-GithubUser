@@ -1,7 +1,6 @@
-package com.indriyantongrh.submission2aplikasigithubuser.Model
+package com.indriyantongrh.submission2aplikasigithubuser.model
 
 import android.os.Parcelable
-import android.os.Parcel
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 

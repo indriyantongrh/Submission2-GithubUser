@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_height="match_parent"
-    tools:context=".Tabs.FollowersFragment">
+    tools:context=".tabs.FollowersFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

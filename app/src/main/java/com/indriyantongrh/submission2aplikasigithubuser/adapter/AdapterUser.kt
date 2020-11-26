@@ -1,4 +1,4 @@
-package com.indriyantongrh.submission2aplikasigithubuser.Adapter
+package com.indriyantongrh.submission2aplikasigithubuser.adapter
 
 import android.content.Intent
 import android.util.Log
@@ -8,15 +8,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.indriyantongrh.submission2aplikasigithubuser.DetailUser
-import com.indriyantongrh.submission2aplikasigithubuser.Model.ItemsItem
-import com.indriyantongrh.submission2aplikasigithubuser.Model.ResponseSearch
+import com.indriyantongrh.submission2aplikasigithubuser.DetailUserActivity
+import com.indriyantongrh.submission2aplikasigithubuser.model.ItemsItem
 import com.indriyantongrh.submission2aplikasigithubuser.R
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.item_user.view.*
-import kotlin.math.log
 
-class adapteruser(private val listUsergithub: ArrayList<ItemsItem>) : RecyclerView.Adapter<adapteruser.ListViewHolder>() {
+class AdapterUser(private val listUsergithub: ArrayList<ItemsItem>) : RecyclerView.Adapter<AdapterUser.ListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false)
@@ -37,8 +34,8 @@ class adapteruser(private val listUsergithub: ArrayList<ItemsItem>) : RecyclerVi
                 data.followingUrl
             )
             Log.d("jajalinten",  "jajalinten"+dataUserIntent)
-            val mIntent = Intent(it.context, DetailUser::class.java)
-            mIntent.putExtra(DetailUser.EXTRA_DETAIL, dataUserIntent)
+            val mIntent = Intent(it.context, DetailUserActivity::class.java)
+            mIntent.putExtra(DetailUserActivity.EXTRA_DETAIL, dataUserIntent)
             it.context.startActivity(mIntent)
         }
     }

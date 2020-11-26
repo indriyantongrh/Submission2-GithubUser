@@ -1,19 +1,14 @@
-package com.indriyantongrh.submission2aplikasigithubuser.Baseurl
+package com.indriyantongrh.submission2aplikasigithubuser.baseurl
 
-import androidx.constraintlayout.solver.state.State
-import com.indriyantongrh.submission2aplikasigithubuser.Model.ResponseDetails
-import com.indriyantongrh.submission2aplikasigithubuser.Model.ResponseFollowers
-import com.indriyantongrh.submission2aplikasigithubuser.Model.ResponseSearch
+import com.indriyantongrh.submission2aplikasigithubuser.model.ResponseDetails
+import com.indriyantongrh.submission2aplikasigithubuser.model.ResponseFollowers
+import com.indriyantongrh.submission2aplikasigithubuser.model.ResponseSearch
 import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.internal.connection.ConnectInterceptor.intercept
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import retrofit2.http.*
-import java.io.IOException
 
 
 /**

@@ -1,4 +1,4 @@
-package com.indriyantongrh.submission2aplikasigithubuser.Model
+package com.indriyantongrh.submission2aplikasigithubuser.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

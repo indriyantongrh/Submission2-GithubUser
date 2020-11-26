@@ -1,21 +1,20 @@
 package com.indriyantongrh.submission2aplikasigithubuser
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.indriyantongrh.submission2aplikasigithubuser.Adapter.adapteruser
-import com.indriyantongrh.submission2aplikasigithubuser.Baseurl.NetworkConfig
-import com.indriyantongrh.submission2aplikasigithubuser.Model.ItemsItem
-import com.indriyantongrh.submission2aplikasigithubuser.Model.ResponseSearch
+import com.indriyantongrh.submission2aplikasigithubuser.adapter.AdapterUser
+import com.indriyantongrh.submission2aplikasigithubuser.baseurl.NetworkConfig
+import com.indriyantongrh.submission2aplikasigithubuser.model.ItemsItem
+import com.indriyantongrh.submission2aplikasigithubuser.model.ResponseSearch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var svUserGithub: SearchView
     private lateinit var imageSearch: ImageView
     private lateinit var imageNotFound: ImageView
+
     lateinit
     var progerssProgressDialog: ProgressDialog
     private lateinit var listUsergithub: ArrayList<ItemsItem>
@@ -59,20 +59,42 @@ class MainActivity : AppCompatActivity() {
                                     imageNotFound.visibility = View.GONE
                                     progerssProgressDialog.dismiss()
                                     listUsergithub = response!!.body()!!.items as ArrayList<ItemsItem>
-                                    rvDataUser.adapter = adapteruser(listUsergithub)
+                                    rvDataUser.adapter = AdapterUser(listUsergithub)
                                 }
                             }
+
                             override fun onFailure(call: Call<ResponseSearch>, t: Throwable) {
                                 Log.d("Failure", "Fialed Connect" + t.message)
                             }
                         })
                 return true
             }
-            override fun onQueryTextChange(newText: String?): Boolean {
 
+            override fun onQueryTextChange(newText: String?): Boolean {
                 return false
             }
         })
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.option_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu1 -> {
+                val i = Intent(this, FavoriteActivity::class.java)
+                startActivity(i)
+                return true
+            }
+            R.id.menu2 -> {
+                val i = Intent(this, SettingActivity::class.java)
+                startActivity(i)
+                return true
+            }
+            else -> return true
+        }
     }
 }
 

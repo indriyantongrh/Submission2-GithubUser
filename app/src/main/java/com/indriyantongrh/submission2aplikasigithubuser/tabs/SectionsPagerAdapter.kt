@@ -1,4 +1,4 @@
-package com.indriyantongrh.submission2aplikasigithubuser.Tabs
+package com.indriyantongrh.submission2aplikasigithubuser.tabs
 
 import android.content.Context
 import androidx.annotation.Nullable
@@ -6,7 +6,6 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
 import com.indriyantongrh.submission2aplikasigithubuser.R
 
 /**
@@ -29,6 +28,6 @@ class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) :
         return mContext.resources.getString(TAB_TITLES[position])
     }
     override fun getCount(): Int {
-        return 2
+        return TAB_TITLES.size
     }
 }

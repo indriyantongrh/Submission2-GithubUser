@@ -1,4 +1,4 @@
-package com.indriyantongrh.submission2aplikasigithubuser.Tabs
+package com.indriyantongrh.submission2aplikasigithubuser.tabs
 
 import android.os.Bundle
 import android.util.Log
@@ -7,11 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.indriyantongrh.submission2aplikasigithubuser.Adapter.adapterfollowers
-import com.indriyantongrh.submission2aplikasigithubuser.Baseurl.NetworkConfig
-import com.indriyantongrh.submission2aplikasigithubuser.DetailUser
-import com.indriyantongrh.submission2aplikasigithubuser.Model.ItemsItem
-import com.indriyantongrh.submission2aplikasigithubuser.Model.ResponseFollowers
+import com.indriyantongrh.submission2aplikasigithubuser.adapter.AdapterFollowers
+import com.indriyantongrh.submission2aplikasigithubuser.baseurl.NetworkConfig
+import com.indriyantongrh.submission2aplikasigithubuser.DetailUserActivity
+import com.indriyantongrh.submission2aplikasigithubuser.model.ItemsItem
+import com.indriyantongrh.submission2aplikasigithubuser.model.ResponseFollowers
 import com.indriyantongrh.submission2aplikasigithubuser.R
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,7 +36,7 @@ class FollowingFragment : Fragment() {
     }
 
     fun getFollowing(){
-        val githubUser = activity!!.intent.getParcelableExtra<ItemsItem>(DetailUser.EXTRA_DETAIL)
+        val githubUser = activity!!.intent.getParcelableExtra<ItemsItem>(DetailUserActivity.EXTRA_DETAIL)
         var username =githubUser?.login
         Log.d("jajal", "username: "+username)
         NetworkConfig().getFollowing.getFollowing(username).enqueue(object : Callback<List<ResponseFollowers>> {
@@ -44,7 +44,7 @@ class FollowingFragment : Fragment() {
                 Log.d("jajal 2" ,"Berhasil")
                 listFollowers = response!!.body()!! as ArrayList<ResponseFollowers>
                 Log.d("jajal List", "jajal" + listFollowers)
-                rvDataUser.adapter = adapterfollowers(listFollowers)
+                rvDataUser.adapter = AdapterFollowers(listFollowers)
             }
             override fun onFailure(call: Call<List<ResponseFollowers>>, t: Throwable) {
                 Log.d("jajal 2" ,"failure")

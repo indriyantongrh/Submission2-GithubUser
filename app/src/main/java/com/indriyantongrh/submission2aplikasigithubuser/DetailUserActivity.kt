@@ -6,22 +6,17 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.indriyantongrh.submission2aplikasigithubuser.Baseurl.NetworkConfig
-import com.indriyantongrh.submission2aplikasigithubuser.Model.ItemsItem
-import com.indriyantongrh.submission2aplikasigithubuser.Model.ResponseDetails
-import com.indriyantongrh.submission2aplikasigithubuser.Tabs.SectionsPagerAdapter
+import com.indriyantongrh.submission2aplikasigithubuser.baseurl.NetworkConfig
+import com.indriyantongrh.submission2aplikasigithubuser.model.ItemsItem
+import com.indriyantongrh.submission2aplikasigithubuser.model.ResponseDetails
+import com.indriyantongrh.submission2aplikasigithubuser.tabs.SectionsPagerAdapter
 import kotlinx.android.synthetic.main.activity_detail_user.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Query
 
-class DetailUser : AppCompatActivity() {
+class DetailUserActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_DETAIL = "extra_detail"
     }
@@ -37,7 +32,7 @@ class DetailUser : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_user)
         val actionBar = supportActionBar
-        actionBar!!.title= "Detail User"
+        actionBar?.title= "Detail User"
         supportActionBar?.setHomeAsUpIndicator(R.drawable.backicon)
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
         tvNameUser = findViewById(R.id.tvNameUser)
@@ -65,7 +60,7 @@ class DetailUser : AppCompatActivity() {
             override fun onResponse(call: Call<ResponseDetails>, response: Response<ResponseDetails>) {
                 progerssProgressDialog.hide()
                 val getValue = response.body()
-                Glide.with(this@DetailUser)
+                Glide.with(this@DetailUserActivity)
                         .load(getValue?.avatar_url)
                         .into(ivAvatar);
                 if(getValue?.name==null){
