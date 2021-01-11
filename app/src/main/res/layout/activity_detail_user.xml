@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".DetailUserActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -119,8 +120,21 @@
             android:text="Repository"
             android:textSize="16sp" />
 
+
+            <Button
+                android:id="@+id/btnfavorites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:text="Favoritkan"/>
+
         </LinearLayout>
+
+
+
     </LinearLayout>
+
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
@@ -130,8 +144,10 @@
         app:tabIndicatorColor="@color/white"
         app:tabTextColor="@android:color/white" />
 
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </LinearLayout>

@@ -1,9 +1,13 @@
 package com.indriyantongrh.submission2aplikasigithubuser
 
 import android.app.ProgressDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -27,6 +31,7 @@ class DetailUserActivity : AppCompatActivity() {
     private lateinit var tvFollowing: TextView
     private lateinit var tvRepository: TextView
     private lateinit var ivAvatar: ImageView
+    private lateinit var btnfavorites: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +45,7 @@ class DetailUserActivity : AppCompatActivity() {
         tvFollowing = findViewById(R.id.tvFollowing)
         tvRepository = findViewById(R.id.tvRepository)
         ivAvatar = findViewById(R.id.ivAvatar)
+        btnfavorites = findViewById(R.id.btnfavorites)
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         view_pager.adapter = sectionsPagerAdapter
